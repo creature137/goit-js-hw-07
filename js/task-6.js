@@ -16,7 +16,7 @@ createBtn.addEventListener("click", () => {
   }
 });
 
-destroyBtn.addEventListener("click", () => (boxes.innerHTML = ""));
+destroyBtn.addEventListener("click", destroyBoxes);
 
 function createBoxes(amount) {
   boxes.innerHTML = "";
@@ -35,4 +35,8 @@ function createBoxes(amount) {
   }
 
   boxes.append(fragment);
+}
+
+function destroyBoxes() {
+  boxes.innerHTML = "";
 }
