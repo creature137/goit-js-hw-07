@@ -27,14 +27,15 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-images.forEach((image) => {
-  gallery.insertAdjacentHTML(
-    "beforeend",
-    `<li>
-      <img src="${image.url}" alt="${image.alt}">
-    </li>`
-  );
-});
+const imageElements = images
+  .map(
+    (image) => `<li>
+    <img src="${image.url}" alt="${image.alt}">
+  </li>`
+  )
+  .join("");
+
+gallery.insertAdjacentHTML("beforeend", imageElements);
 
 gallery.style.listStyleType = "none";
 gallery.style.display = "flex";

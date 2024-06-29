@@ -16,23 +16,23 @@ createBtn.addEventListener("click", () => {
   }
 });
 
-destroyBtn.addEventListener("click", () => destroyBoxes());
+destroyBtn.addEventListener("click", () => (boxes.innerHTML = ""));
 
 function createBoxes(amount) {
   boxes.innerHTML = "";
 
   let size = 30;
+  const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < amount; i += 1) {
-    boxes.insertAdjacentHTML(
-      "beforeend",
-      `<div style="background-color: ${getRandomHexColor()}; width: ${size}px; height: ${size}px"></div>`
-    );
+    const div = document.createElement("div");
+    div.style.backgroundColor = getRandomHexColor();
+    div.style.width = `${size}px`;
+    div.style.height = `${size}px`;
+    fragment.appendChild(div);
 
     size += 10;
   }
-}
 
-function destroyBoxes() {
-  boxes.innerHTML = "";
+  boxes.append(fragment);
 }
